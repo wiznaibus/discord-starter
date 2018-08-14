@@ -1,0 +1,48 @@
+doctype html
+html
+	head
+		include includes/_head.pug
+		title Login - Discord Starter
+
+	body
+		section.material-half-bg
+			.cover
+
+		section.login-content
+			.logo: h1 Discord Starter
+
+			.login-box
+				form.login-form(action='/auth/discord')
+					h3.login-head
+						i.fa.fa-lg.fa-fw.fa-user
+						| LOG IN WITH
+						img.discord(src='img/discord-wordmark.png', alt='Discord')
+
+					.form-group.btn-container
+						button.btn.btn-primary.btn-block
+							i.fab.fa-discord.fa-lg.fa-fw
+							| LOG IN
+
+					.form-group.mt-3
+						p.semibold-text.mb-0
+							a(href="#" data-toggle="flip") Discord Login? <i class="fa fa-angle-right fa-fw"></i>
+
+				form.forget-form(action='/auth/discord')
+					h3.login-head
+						i.fab.fa-lg.fa-fw.fa-discord
+						| Why Discord?
+					
+					| This website uses Discord logins to authenticate users and to prevent access from users who are not members of an authorized guild.
+
+					.form-group.mt-3
+						p.semibold-text.mb-0
+							a(href="#" data-toggle="flip") <i class="fa fa-angle-left fa-fw"></i> Got It!
+
+		include includes/_javascript.pug
+
+		script(type="text/javascript").
+			// Login Page Flipbox control
+			$('.login-content [data-toggle="flip"]').click(function() {
+				$('.login-box').toggleClass('flipped');
+				return false;
+			});

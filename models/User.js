@@ -1,69 +1,52 @@
-const bcrypt = require('bcrypt-nodejs');
-const crypto = require('crypto');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, unique: true },
-  password: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-
-  facebook: String,
-  twitter: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  steam: String,
-  tokens: Array,
-
-  profile: {
-    name: String,
-    gender: String,
-    location: String,
-    website: String,
-    picture: String
-  }
+  user_id: { type: String, unique: true },
+  username: String,
+  discriminator: String,
+  avatar: String,
+  administrator: Boolean,
+  servers: Array,
+  tokens: Array
 }, { timestamps: true });
 
 /**
- * Password hash middleware.
+ * Helper method for getting user's avatar.
  */
-userSchema.pre('save', function save(next) {
-  const user = this;
-  if (!user.isModified('password')) { return next(); }
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) { return next(err); }
-    bcrypt.hash(user.password, salt, null, (err, hash) => {
-      if (err) { return next(err); }
-      user.password = hash;
-      next();
+userSchema.methods.getAvatar = function avatar() {
+  return `https://cdn.discordapp.com/avatars/${this.user_id}/${this.avatar}.png`;
+};
+
+/**
+ * Helper method for getting a user's servers with their icons.
+ */
+userSchema.methods.getServers = function avatar() {
+  let icons = [];
+  this.servers.forEach(server => {
+    icons.push({
+      name: server.name,
+      icon: `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png`
     });
   });
-});
-
-/**
- * Helper method for validating user's password.
- */
-userSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    cb(err, isMatch);
-  });
+  return icons;
 };
 
 /**
- * Helper method for getting user's gravatar.
+ * Helper method for getting user's sign-up date.
  */
-userSchema.methods.gravatar = function gravatar(size) {
-  if (!size) {
-    size = 200;
+userSchema.methods.getCreated = function created() {
+  return moment(this.createdAt).format('YYYY-MM-DD');
+}
+
+/**
+ * Helper method to return whether user has token type.
+ */
+userSchema.methods.hasToken = function(provider) {
+  if (_.find(this.tokens, { kind: provider })) {
+    return true;
   }
-  if (!this.email) {
-    return `https://gravatar.com/avatar/?s=${size}&d=retro`;
-  }
-  const md5 = crypto.createHash('md5').update(this.email).digest('hex');
-  return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
-};
+  else return false;
+}
 
 const User = mongoose.model('User', userSchema);
 

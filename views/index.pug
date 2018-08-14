@@ -1,0 +1,76 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'portal'
+	- var activeGroup = 'none'
+
+block content
+	.app-title
+		div
+			h1
+				i.fas.fa-users
+				|  Portal
+			p A Discord guild portal boilerplate
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fas.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='/') Portal
+
+	.row
+		.col-md-6
+			.tile
+				h3.tile-title Hackathon Starter
+
+				p Discord Starter is based on the Hackathon Starter boilerplate by #[a(href="https://github.com/sahat/hackathon-starter", target="_blank") Sahat Yalkabov].
+
+				p Hackathon Starter is an incredibly useful project with a large community and information that's invaluable for beginners. The Readme gives step-by-step information on installing and running the app, setting up OAuth credentials, extending the app functionality, and much, much more.
+
+				p.mt-4.mb-4
+					a.btn.btn-primary.mr-2.mb-2(href="https://hackathon-starter-2018.herokuapp.com/", target="_blank")
+						i.fas.fa-globe
+						| Live Demo
+					a.btn.btn-info.mr-2.mb-2(href="https://github.com/sahat/hackathon-starter", target="_blank")
+						i.fab.fa-github
+						| GitHub
+
+
+		.col-md-6
+			.tile
+				h3.tile-title Vali Theme
+
+				p Discord Starter uses the beautiful Vali admin theme by #[a(href="http://pratikborsadiya.in/blog/vali-admin", target="_blank") Pratik Borsadiya].
+
+				p Vali is a free and responsive admin theme built with Bootstrap 4, SASS, and PUG.js. It's fully-customizable and modular.
+
+				p Vali is a light-weight, expandable, good-looking theme. This theme has all the features required for a dashboard theme built like plug-and-play modules. Take a look at the #[a(href="http://pratikborsadiya.in/blog/vali-admin", target="_blank") documentation] to read more about customizing the theme colors and functionality.
+
+				p.mt-4.mb-4
+					a.btn.btn-primary.mr-2.mb-2(href="http://pratikborsadiya.in/blog/vali-admin", target="_blank")
+						i.fa.fa-file
+						| Docs
+					a.btn.btn-info.mr-2.mb-2(href="https://github.com/pratikborsadiya/vali-admin", target="_blank")
+						i.fab.fa-github
+						| GitHub
+
+	.row
+		.col-md-6
+			.tile
+				h3.tile-title Heading
+				p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+
+				p.mt-4.mb-4
+					a.btn.btn-primary.mr-2.mb-2(href='#')
+						i.fas.fa-angle-double-right
+						| View Details
+
+		.col-md-6
+			.tile
+				h3.tile-title Heading
+				p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+
+				p.mt-4.mb-4
+					a.btn.btn-primary.mr-2.mb-2(href='#')
+						i.fas.fa-angle-double-right
+						| View Details

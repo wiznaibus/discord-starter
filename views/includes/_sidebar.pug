@@ -1,0 +1,31 @@
+.app-sidebar__overlay(data-toggle="sidebar")
+aside.app-sidebar
+
+	ul.app-menu
+		li.treeview(class={'is-expanded': activeGroup == 'user'})
+			a.app-menu__item(href='#' data-toggle='treeview')
+				img.app-sidebar__user-avatar(src=user.getAvatar(), alt='User Image')
+				span.app-sidebar__user-designation= user.username + '#' + user.discriminator
+				span.app-menu__label
+				i.treeview-indicator.fa.fa-angle-right
+						
+			ul.treeview-menu
+				li
+					a.treeview-item(href='/profile' class={'active': activePage == 'profile'})
+						i.icon.fa.fa-angle-right
+						|  Profile
+				li
+					a.treeview-item(href='/logout')
+						i.icon.fa.fa-angle-right
+						|  Logout
+
+		li
+			a.app-menu__item(href='/' class={'active': activePage == 'portal'})
+				i.app-menu__icon.fas.fa-users
+				span.app-menu__label Portal
+
+		//- if user.administrator
+		li
+			a.app-menu__item(href='/settings' class={'active': activePage == 'settings'})
+				i.app-menu__icon.fa.fa-cog
+				span.app-menu__label Settings

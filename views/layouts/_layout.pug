@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+
+	//- Variables to set active page in sidebar
+	block variables
+		- var activePage = 'portal'
+		- var activeGroup = 'none'
+
+	head
+		meta(name="description", content="Discord Starter is a Discord guild portal built using sahat's Hackathon Starter and pratikborsadiya's Vali theme")
+
+		block title
+			title Discord Starter
+
+		include ../includes/_head.pug
+
+	body.app.sidebar-mini.rtl
+
+		// Navbar
+		include ../includes/_header.pug
+
+		// Sidebar menu
+		include ../includes/_sidebar.pug
+
+		main.app-content
+			block content
+
+		//- Javascripts
+		include ../includes/_javascript.pug
+		
+		// Page specific javascripts
+		block specific-js
