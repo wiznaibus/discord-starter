@@ -1,7 +1,17 @@
 Discord Starter
 =======================
 
-Based off <a href="https://github.com/sahat/hackathon-starter" target="_blank">sahat's Hackathon Starter</a>, this Discord guild portal boilerplate provides a base to build a website portal using Discord authentication with the option of requiring users to be members of one or more authorized guilds in order to access the portal.
+Based off <a href="https://github.com/sahat/hackathon-starter" target="_blank">sahat's Hackathon Starter</a>, this Discord guild portal boilerplate provides a base to build a website portal using Discord authentication with the option of requiring users to be members of one or more authorized servers in order to access the portal.
+
+To-Do
+---------------
+
+Note: The Discord Starter currently only has partial functionality. The below is a to-do list of planned functionality.
+
+- Add a settings page where administrators can specify whether the app should allow logins from any Discord user or only users who are members of one or more authorized servers
+- Form for administrators to specify which of their servers should be authorized servers
+- Login functionality to handle the switch between open/authorized servers
+- User Profile page
 
 Getting Started
 ---------------
